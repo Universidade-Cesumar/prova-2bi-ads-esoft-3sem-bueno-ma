@@ -10,7 +10,6 @@ function atualizarTabela(materiais) {
 
     tabela.innerHTML = "";
 
-    // Verifica se materiais é um array
     if (!Array.isArray(materiais)) {
         console.warn("Resposta não é um array:", materiais);
         tabela.innerHTML = '<tr><td colspan="2" class="text-center">Nenhum material cadastrado</td></tr>';
@@ -92,7 +91,6 @@ async function adicionarMaterial(nome, quantidade) {
     }
 }
 
-// Aguardar o DOM carregar completamente
 document.addEventListener("DOMContentLoaded", () => {
     const btnCadastrar = document.getElementById("btn-cadastrar");
     
@@ -126,27 +124,22 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
         
-        // Desabilitar botão durante o cadastro
         btnCadastrar.disabled = true;
         btnCadastrar.textContent = "Cadastrando...";
         
         await adicionarMaterial(nome, quantidade);
         
-        // Limpar formulário
         inputNome.value = "";
         inputQuantidade.value = "";
         inputNome.focus();
         
-        // Reabilitar botão
         btnCadastrar.disabled = false;
         btnCadastrar.textContent = "Cadastrar Material";
     });
     
-    // Carregar materiais ao iniciar
     carregarMateriais();
 });
 
-// Função para testar a API manualmente (útil para debug)
 window.testarAPI = async function() {
     console.log("=== TESTANDO API ===");
     try {

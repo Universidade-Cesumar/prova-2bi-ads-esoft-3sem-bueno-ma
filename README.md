@@ -1,1 +1,27 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/B74p-HKt)
+# Controle de Almoxarifado
+
+## Descrição
+
+Sistema web desenvolvido para realizar o cadastro e controle de materiais de um almoxarifado utilizando HTML, CSS, JavaScript e MockAPI.
+
+O sistema permite cadastrar materiais e visualizar a lista de itens armazenados por meio de uma API REST simulada.
+
+## Funcionalidades
+
+* Cadastro de materiais.
+* Registro da quantidade disponível.
+* Listagem dos materiais cadastrados.
+* Integração com MockAPI.
+* Interface responsiva utilizando Bootstrap.
+
+## Tecnologias Utilizadas
+
+* HTML5
+* CSS3
+* Bootstrap 5
+* JavaScript
+* MockAPI
+
+by maria 
+
+
