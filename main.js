@@ -173,3 +173,70 @@ function configurarEventos() {
             };
         });
 }
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        const btnCadastrar =
+            document.getElementById(
+                "btn-cadastrar"
+            );
+
+        btnCadastrar.addEventListener(
+            "click",
+            async () => {
+
+                const nome =
+                    document
+                        .getElementById(
+                            "input-nome"
+                        )
+                        .value
+                        .trim();
+
+                const quantidade =
+                    document
+                        .getElementById(
+                            "input-quantidade"
+                        )
+                        .value;
+
+                if (!nome) {
+
+                    alert(
+                        "Digite o nome do material!"
+                    );
+
+                    return;
+                }
+
+                if (
+                    !quantidade ||
+                    quantidade <= 0
+                ) {
+
+                    alert(
+                        "Digite uma quantidade válida!"
+                    );
+
+                    return;
+                }
+
+                await adicionarMaterial(
+                    nome,
+                    quantidade
+                );
+
+                document.getElementById(
+                    "input-nome"
+                ).value = "";
+
+                document.getElementById(
+                    "input-quantidade"
+                ).value = "";
+            }
+        );
+
+        carregarMateriais();
+    }
+);
