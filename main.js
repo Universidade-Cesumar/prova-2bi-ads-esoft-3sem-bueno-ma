@@ -83,4 +83,93 @@ async function excluirMaterial(id) {
 
         console.error("Erro ao excluir:", erro);
     }
+}async function baixarMaterial(id, estoqueAtual, quantidadeRetirada) {
+
+    try {
+
+        const novoEstoque =
+            estoqueAtual - quantidadeRetirada;
+
+        await fetch(`${URL_API}/${id}`, {
+
+            method: "PUT",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                quantidade: novoEstoque
+            })
+        });
+
+        await carregarMateriais();
+
+    } catch (erro) {
+
+        console.error("Erro ao baixar estoque:", erro);
+    }
+}
+
+function configurarEventos() {
+
+    document.querySelectorAll(".btn-excluir")
+        .forEach(botao => {
+
+            botao.onclick = () => {
+
+                const id = botao.dataset.id;
+
+                if (
+                    confirm(
+                        "Deseja excluir este material?"
+                    )
+                ) {
+                    excluirMaterial(id);
+                }
+            };
+        });
+
+    document.querySelectorAll(".btn-baixar")
+        .forEach(botao => {
+
+            botao.onclick = () => {
+
+                const id =
+                    botao.dataset.id;
+
+                const estoqueAtual =
+                    Number(
+                        botao.dataset.estoque
+                    );
+
+                const quantidadeRetirada =
+                    Number(
+                        botao.parentElement
+                            .querySelector(
+                                "#input-retirada"
+                            ).value
+                    );
+
+                if (
+                    !validarRetirada(
+                        estoqueAtual,
+                        quantidadeRetirada
+                    )
+                ) {
+
+                    alert(
+                        "Quantidade inválida para retirada."
+                    );
+
+                    return;
+                }
+
+                baixarMaterial(
+                    id,
+                    estoqueAtual,
+                    quantidadeRetirada
+                );
+            };
+        });
 }
