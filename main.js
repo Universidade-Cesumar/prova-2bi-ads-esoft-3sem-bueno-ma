@@ -36,39 +36,5 @@ function atualizarTabela(materiais) {
 
         return;
     }
-materiais.forEach(material => {
 
-        const nome = material.nome || "Sem nome";
-        const quantidade = Number(material.quantidade) || 0;
-
-        const linha = document.createElement("tr");
-
-        linha.innerHTML = `
-            <td>${nome}</td>
-
-            <td>${quantidade}</td>
-
-            <td>
-
-                <input
-                    type="number"
-                    id="input-retirada"
-                    min="1"
-                    placeholder="Qtd"
-                    style="width:80px">
-
-                <button
-                    class="btn btn-warning btn-baixar"
-                    data-id="${material.id}"
-                    data-estoque="${quantidade}">
-                    Baixar
-                </button>
-
-                <button
-                    class="btn btn-danger btn-excluir"
-                    data-id="${material.id}">
-                    Excluir
-                </button>
-
-            </td>
-        `;
+    materiais.forEach(material =>
