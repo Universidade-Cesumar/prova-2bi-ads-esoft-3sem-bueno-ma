@@ -56,7 +56,7 @@ function atualizarTabela(materiais) {
                     id="input-retirada"
                     min="1"
                     placeholder="Qtd"
-                    style="width:80px">
+                    style="width:20px">
 
                 <button
                     class="btn btn-warning btn-baixar"
